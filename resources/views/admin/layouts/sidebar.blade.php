@@ -64,6 +64,25 @@
                 </a>
             </li>
 
+            <li class="{{ setSidebarActive(['admin.artikel.*']) }}">
+                <a class="nav-link" href="{{ route('admin.artikel.index') }}"><i class="fas fa-address-card"></i>
+                    <span>Hero Section</span>
+                </a>
+            </li>
+
+            <li class="{{ setSidebarActive(['admin.artikel.*']) }}">
+                <a class="nav-link" href="{{ route('admin.artikel.index') }}"><i class="fas fa-address-card"></i>
+                    <span>Our Product</span>
+                </a>
+            </li>
+
+            <li class="{{ setSidebarActive(['admin.artikel.*']) }}">
+                <a class="nav-link" href="{{ route('admin.artikel.index') }}"><i class="fas fa-address-card"></i>
+                    <span>Our Teams</span>
+                </a>
+            </li>
+
+
         </ul>
     </aside>
 </div>
