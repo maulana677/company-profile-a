@@ -64,13 +64,13 @@
                 </a>
             </li>
 
-            <li class="{{ setSidebarActive(['admin.artikel.*']) }}">
-                <a class="nav-link" href="{{ route('admin.artikel.index') }}"><i class="fas fa-address-card"></i>
-                    <span>Hero Section</span>
+            <li class="{{ setSidebarActive(['admin.statistics.*']) }}">
+                <a class="nav-link" href="{{ route('admin.statistics.index') }}"><i class="fas fa-address-card"></i>
+                    <span>Statistics</span>
                 </a>
             </li>
 
-            <li class="{{ setSidebarActive(['admin.artikel.*']) }}">
+            {{--  <li class="{{ setSidebarActive(['admin.artikel.*']) }}">
                 <a class="nav-link" href="{{ route('admin.artikel.index') }}"><i class="fas fa-address-card"></i>
                     <span>Our Product</span>
                 </a>
@@ -80,7 +80,7 @@
                 <a class="nav-link" href="{{ route('admin.artikel.index') }}"><i class="fas fa-address-card"></i>
                     <span>Our Teams</span>
                 </a>
-            </li>
+            </li>  --}}
 
 
         </ul>
