@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CompanyStatistic;
 use Illuminate\Http\Request;
 
 class CompanyStatisticController extends Controller
@@ -12,7 +13,9 @@ class CompanyStatisticController extends Controller
      */
     public function index()
     {
-        //
+        $artikel = CompanyStatistic::all();
+
+        return view('admin.artikel.index', compact('artikel'));
     }
 
     /**
