@@ -15,7 +15,7 @@ class CompanyStatisticController extends Controller
     {
         $artikel = CompanyStatistic::all();
 
-        return view('admin.artikel.index', compact('artikel'));
+        return view('admin.company-statistics.index', compact('artikel'));
     }
 
     /**
