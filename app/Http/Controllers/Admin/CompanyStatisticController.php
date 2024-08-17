@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreStatisticRequest;
 use App\Models\CompanyStatistic;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,8 @@ class CompanyStatisticController extends Controller
      */
     public function index()
     {
-        $artikel = CompanyStatistic::all();
-
-        return view('admin.company-statistics.index', compact('artikel'));
+        $statistics = CompanyStatistic::all();
+        return view('admin.company-statistics.index', compact('statistics'));
     }
 
     /**
@@ -23,13 +23,13 @@ class CompanyStatisticController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.company-statistics.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStatisticRequest $request)
     {
         //
     }
