@@ -358,8 +358,8 @@
                     <div
                         class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
                         <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
-                            <img src="assets/photos/photo2.png" class="object-cover w-full h-full object-center"
-                                alt="photo">
+                            <img src="{{ asset('frontend/src/assets/photos/photo2.png') }}"
+                                class="object-cover w-full h-full object-center" alt="photo">
                         </div>
                     </div>
                     <div class="flex flex-col gap-1 text-center">
@@ -368,7 +368,7 @@
                     </div>
                     <div class="flex items-center justify-center gap-[10px]">
                         <div class="w-6 h-6 flex shrink-0">
-                            <img src="assets/icons/global.svg" alt="icon">
+                            <img src="{{ asset('frontend/src/assets/icons/global.svg') }}" alt="icon">
                         </div>
                         <p class="text-cp-dark-blue font-semibold">Bali, Indonesia</p>
                     </div>
@@ -378,8 +378,8 @@
                     <div
                         class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
                         <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
-                            <img src="assets/photos/photo3.png" class="object-cover w-full h-full object-center"
-                                alt="photo">
+                            <img src="{{ asset('frontend/src/assets/photos/photo3.png') }}"
+                                class="object-cover w-full h-full object-center" alt="photo">
                         </div>
                     </div>
                     <div class="flex flex-col gap-1 text-center">
@@ -388,7 +388,7 @@
                     </div>
                     <div class="flex items-center justify-center gap-[10px]">
                         <div class="w-6 h-6 flex shrink-0">
-                            <img src="assets/icons/global.svg" alt="icon">
+                            <img src="{{ asset('frontend/src/assets/icons/global.svg') }}" alt="icon">
                         </div>
                         <p class="text-cp-dark-blue font-semibold">Orchard, Singapore</p>
                     </div>
@@ -398,8 +398,8 @@
                     <div
                         class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
                         <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
-                            <img src="assets/photos/photo4.png" class="object-cover w-full h-full object-center"
-                                alt="photo">
+                            <img src="{{ asset('frontend/src/assets/photos/photo4.png') }}"
+                                class="object-cover w-full h-full object-center" alt="photo">
                         </div>
                     </div>
                     <div class="flex flex-col gap-1 text-center">
@@ -408,7 +408,7 @@
                     </div>
                     <div class="flex items-center justify-center gap-[10px]">
                         <div class="w-6 h-6 flex shrink-0">
-                            <img src="assets/icons/global.svg" alt="icon">
+                            <img src="{{ asset('frontend/src/assets/icons/global.svg') }}" alt="icon">
                         </div>
                         <p class="text-cp-dark-blue font-semibold">Ho Chi Min, Vietnam</p>
                     </div>
@@ -418,8 +418,8 @@
                     <div
                         class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
                         <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
-                            <img src="assets/photos/photo5.png" class="object-cover w-full h-full object-center"
-                                alt="photo">
+                            <img src="{{ asset('frontend/src/assets/photos/photo5.png') }}"
+                                class="object-cover w-full h-full object-center" alt="photo">
                         </div>
                     </div>
                     <div class="flex flex-col gap-1 text-center">
@@ -428,7 +428,7 @@
                     </div>
                     <div class="flex items-center justify-center gap-[10px]">
                         <div class="w-6 h-6 flex shrink-0">
-                            <img src="assets/icons/global.svg" alt="icon">
+                            <img src="{{ asset('frontend/src/assets/icons/global.svg') }}" alt="icon">
                         </div>
                         <p class="text-cp-dark-blue font-semibold">Ho Chi Min, Vietnam</p>
                     </div>
@@ -438,8 +438,8 @@
                     <div
                         class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
                         <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
-                            <img src="assets/photos/photo6.png" class="object-cover w-full h-full object-center"
-                                alt="photo">
+                            <img src="{{ asset('frontend/src/assets/photos/photo6.png') }}"
+                                class="object-cover w-full h-full object-center" alt="photo">
                         </div>
                     </div>
                     <div class="flex flex-col gap-1 text-center">
@@ -448,7 +448,7 @@
                     </div>
                     <div class="flex items-center justify-center gap-[10px]">
                         <div class="w-6 h-6 flex shrink-0">
-                            <img src="assets/icons/global.svg" alt="icon">
+                            <img src="{{ asset('frontend/src/assets/icons/global.svg') }}" alt="icon">
                         </div>
                         <p class="text-cp-dark-blue font-semibold">Shanghai, China</p>
                     </div>
@@ -458,8 +458,8 @@
                     <div
                         class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
                         <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
-                            <img src="assets/photos/photo7.png" class="object-cover w-full h-full object-center"
-                                alt="photo">
+                            <img src="{{ asset('frontend/src/assets/photos/photo7.png') }}"
+                                class="object-cover w-full h-full object-center" alt="photo">
                         </div>
                     </div>
                     <div class="flex flex-col gap-1 text-center">
@@ -468,7 +468,7 @@
                     </div>
                     <div class="flex items-center justify-center gap-[10px]">
                         <div class="w-6 h-6 flex shrink-0">
-                            <img src="assets/icons/global.svg" alt="icon">
+                            <img src="{{ asset('frontend/src/assets/icons/global.svg') }}" alt="icon">
                         </div>
                         <p class="text-cp-dark-blue font-semibold">Bali, Indonesia</p>
                     </div>

@@ -11,7 +11,7 @@ class StoreTestimonialRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreTestimonialRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'message' => ['required', 'string', 'max:255'],
+            'project_client_id' => ['required', 'integer'],
+            'thumbnail' => ['required', 'image', 'mimes:png,jpg,jpeg'],
         ];
     }
 }
