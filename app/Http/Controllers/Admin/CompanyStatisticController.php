@@ -14,8 +14,8 @@ class CompanyStatisticController extends Controller
      */
     public function index()
     {
-        $statistics = CompanyStatistic::all();
-        return view('admin.company-statistics.index', compact('statistics'));
+        $statistics = CompanyStatistic::orderByDesc('id')->paginate(10);
+        return view('admin.statistics.index', compact('statistics'));
     }
 
     /**
@@ -23,7 +23,7 @@ class CompanyStatisticController extends Controller
      */
     public function create()
     {
-        return view('admin.company-statistics.create');
+        return view('admin.statistics.create');
     }
 
     /**

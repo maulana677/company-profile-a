@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\ArtikelController;
+use App\Http\Controllers\Admin\CompanyAboutController;
 use App\Http\Controllers\Admin\CompanyStatisticController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FooterInfoController;
+use App\Http\Controllers\Admin\HeroSectionController;
+use App\Http\Controllers\Admin\OurPrincipleController;
+use App\Http\Controllers\Admin\OurTeamController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProjectClientController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\frontend\FrontController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,34 +38,34 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     });
 
     Route::middleware('can:manage principles')->group(function () {
-        Route::resource('principles', ProductController::class);
+        Route::resource('principles', OurPrincipleController::class);
     });
 
     Route::middleware('can:manage testimonials')->group(function () {
-        Route::resource('testimonials', ProductController::class);
+        Route::resource('testimonials', TestimonialController::class);
     });
 
     Route::middleware('can:manage clients')->group(function () {
-        Route::resource('clients', ProductController::class);
+        Route::resource('clients', ProjectClientController::class);
     });
 
     Route::middleware('can:manage teams')->group(function () {
-        Route::resource('teams', ProductController::class);
+        Route::resource('teams', OurTeamController::class);
     });
 
     Route::middleware('can:manage abouts')->group(function () {
-        Route::resource('abouts', ProductController::class);
+        Route::resource('abouts', CompanyAboutController::class);
     });
 
     Route::middleware('can:manage appointments')->group(function () {
-        Route::resource('appointments', ProductController::class);
+        Route::resource('appointments', AppointmentController::class);
     });
 
     Route::middleware('can:manage hero sections')->group(function () {
-        Route::resource('hero-sections', ProductController::class);
+        Route::resource('hero-sections', HeroSectionController::class);
     });
 
     Route::middleware('can:manage footer sections')->group(function () {
-        Route::resource('footer-sections', ProductController::class);
+        Route::resource('footer-sections', FooterInfoController::class);
     });
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProjectClient;
 use Illuminate\Http\Request;
 
 class ProjectClientController extends Controller
@@ -12,7 +13,8 @@ class ProjectClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = ProjectClient::orderByDesc('id')->paginate(10);
+        return view('admin.clients.index', compact('clients'));
     }
 
     /**

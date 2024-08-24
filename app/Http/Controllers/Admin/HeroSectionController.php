@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\HeroSection;
 use Illuminate\Http\Request;
 
 class HeroSectionController extends Controller
@@ -12,7 +13,8 @@ class HeroSectionController extends Controller
      */
     public function index()
     {
-        //
+        $heroSection = HeroSection::orderByDesc('id')->paginate(10);
+        return view('admin.hero-section.index', compact('heroSection'));
     }
 
     /**

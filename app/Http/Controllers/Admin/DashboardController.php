@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Artikel;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,8 +14,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $countArtikel = Artikel::count();
-        return view('admin.dashboard.index', compact('countArtikel'));
+        $countProduct = Product::count();
+        return view('admin.dashboard.index', compact('countProduct'));
     }
 
     /**

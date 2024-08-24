@@ -51,9 +51,10 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="{{ setSidebarActive(['admin.dashboard']) }}"><a class="nav-link"
-                    href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i><span>General
-                        Dashboard</span></a>
+            <li class="{{ setSidebarActive(['admin.dashboard']) }}">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-fire">
+                    </i><span>Dashboard</span>
+                </a>
             </li>
 
             <li class="menu-header">Starter</li>
@@ -81,7 +82,7 @@
                 </ul>
             </li>
 
-            <li class="{{ setSidebarActive(['admin.statistics.*']) }}">
+            <li class="{{ setSidebarActive(['admin.teams.*']) }}">
                 <a class="nav-link" href="{{ route('admin.teams.index') }}"><i class="fas fa-address-card"></i>
                     <span>Our Teams</span>
                 </a>
@@ -114,7 +115,7 @@
 
             <li class="{{ setSidebarActive(['admin.appointments.*']) }}">
                 <a class="nav-link" href="{{ route('admin.appointments.index') }}"><i class="fas fa-address-card"></i>
-                    <span>About</span>
+                    <span>Appointment</span>
                 </a>
             </li>
 
