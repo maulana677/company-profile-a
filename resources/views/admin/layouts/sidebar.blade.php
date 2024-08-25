@@ -99,10 +99,10 @@
                     <span>Stories</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setSidebarActive(['admin.testimonials.*']) }}">
-                        <a class="nav-link" href="{{ route('admin.testimonials.index') }}">Hero Section</a>
+                        <a class="nav-link" href="{{ route('admin.testimonials.index') }}">Testimonials</a>
                     </li>
                     <li class="{{ setSidebarActive(['admin.Clients.*']) }}">
-                        <a class="nav-link" href="{{ route('admin.clients.index') }}">Our Principles</a>
+                        <a class="nav-link" href="{{ route('admin.clients.index') }}">Our Clients</a>
                     </li>
                 </ul>
             </li>

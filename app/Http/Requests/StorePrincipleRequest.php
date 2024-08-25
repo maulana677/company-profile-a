@@ -28,4 +28,25 @@ class StorePrincipleRequest extends FormRequest
             'icon' => ['required', 'image', 'mimes:png,jpg,jpeg'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama wajib diisi.',
+            'name.string'   => 'Nama harus berupa string.',
+            'name.max'      => 'Nama tidak boleh melebihi 255 karakter.',
+
+            'subtitle.required' => 'Subtitle wajib diisi.',
+            'subtitle.string'   => 'Subtitle harus berupa string.',
+            'subtitle.max'      => 'Subtitle tidak boleh melebihi 255 karakter.',
+
+            'thumbnail.required' => 'Thumbnail wajib diunggah.',
+            'thumbnail.image'    => 'Thumbnail harus berupa gambar.',
+            'thumbnail.mimes'    => 'Thumbnail harus berformat png, jpg, atau jpeg.',
+
+            'icon.required' => 'Icon wajib diunggah.',
+            'icon.image'    => 'Icon harus berupa gambar.',
+            'icon.mimes' => 'Icon harus berformat png, jpg, atau jpeg.',
+        ];
+    }
 }

@@ -101,8 +101,6 @@ class CompanyAboutController extends Controller
         // Mengupdate field lain pada model
         $about->name = $request->name;
         $about->type = $request->type;
-
-        // Menyimpan perubahan ke database
         $about->save();
 
         // Mengirimkan pesan sukses menggunakan Toastr

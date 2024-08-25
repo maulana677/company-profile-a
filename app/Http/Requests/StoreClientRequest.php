@@ -25,7 +25,28 @@ class StoreClientRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'occupation' => ['required', 'string', 'max:255'],
             'avatar' => ['required', 'image', 'mimes:png,jpg,jpeg'],
-            'logo' => ['required', 'image', 'mimes:png,jpg,jpeg'],
+            'logo' => ['required', 'image', 'mimes:png,jpg,jpeg,svg'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama wajib diisi.',
+            'name.string' => 'Nama harus berupa teks.',
+            'name.max' => 'Nama maksimal 255 karakter.',
+
+            'occupation.required' => 'Pekerjaan wajib diisi.',
+            'occupation.string' => 'Pekerjaan harus berupa teks.',
+            'occupation.max' => 'Pekerjaan maksimal 255 karakter.',
+
+            'avatar.required' => 'Avatar wajib diunggah.',
+            'avatar.image' => 'Avatar harus berupa file gambar.',
+            'avatar.mimes' => 'Avatar harus berformat PNG, JPG, JPEG atau SVG.',
+
+            'logo.required' => 'Logo wajib diunggah.',
+            'logo.image' => 'Logo harus berupa file gambar.',
+            'logo.mimes' => 'Logo harus berformat PNG, JPG, JPEG atau SVG',
         ];
     }
 }

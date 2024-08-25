@@ -28,4 +28,19 @@ class StoreAboutRequest extends FormRequest
             'keypoints.*' => ['required', 'string', 'max:255'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama wajib diisi.',
+            'name.string' => 'Nama harus berupa string.',
+            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+            'type.required' => 'Tipe wajib diisi.',
+            'type.string' => 'Tipe harus berupa string.',
+            'type.max' => 'Tipe tidak boleh lebih dari 255 karakter.',
+            'thumbnail.required' => 'Thumbnail wajib diunggah.',
+            'thumbnail.image' => 'Thumbnail harus berupa gambar.',
+            'thumbnail.mimes' => 'Thumbnail harus berupa file dengan format: png, jpg, jpeg, atau webp.',
+        ];
+    }
 }
