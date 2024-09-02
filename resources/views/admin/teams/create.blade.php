@@ -3,60 +3,64 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Edit Company Statistic</h1>
+            <h1>Create Team Member</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="{{ route('admin.statistics.index') }}">Company Statistics</a></div>
-                <div class="breadcrumb-item">Edit</div>
+                <div class="breadcrumb-item"><a href="{{ route('admin.teams.index') }}">Teams</a></div>
+                <div class="breadcrumb-item">Create</div>
             </div>
         </div>
 
         <div class="section-body">
-            <h2 class="section-title">Edit Company Statistic</h2>
+            <h2 class="section-title">Create Team Member</h2>
             <p class="section-lead">
-                On this page, you can edit the existing company statistic and update the required fields.
+                On this page, you can create a new team member and fill in all the required fields.
             </p>
 
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Edit Company Statistic</h4>
+                            <h4>Create Team Member</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.statistics.update', $statistic->id) }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form action="{{ route('admin.teams.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @method('PUT')
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="name" class="form-control"
-                                            value="{{ old('name', $statistic->name) }}">
+                                        <input type="text" name="name" class="form-control" value="">
                                         @error('name')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Goal</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Occupation</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="goal" class="form-control"
-                                            value="{{ old('goal', $statistic->goal) }}">
-                                        @error('goal')
+                                        <input type="text" name="occupation" class="form-control" value="">
+                                        @error('occupation')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Location</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="image-preview" class="image-preview"
-                                            style="background-image: url('{{ asset('storage/' . $statistic->icon) }}'); background-size: cover; background-position: center center;">
+                                        <input type="text" name="location" class="form-control" value="">
+                                        @error('location')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Avatar</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <div id="image-preview" class="image-preview">
                                             <label for="image-upload" id="image-label">Choose File</label>
-                                            <input type="file" name="icon" id="image-upload" />
+                                            <input type="file" name="avatar" id="image-upload" />
                                         </div>
-                                        @error('icon')
+                                        @error('avatar')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -64,7 +68,7 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                     <div class="col-sm-12 col-md-7">
-                                        <button class="btn btn-primary">Update</button>
+                                        <button class="btn btn-primary">Create</button>
                                     </div>
                                 </div>
                             </form>
@@ -80,7 +84,7 @@
     <script>
         $(document).ready(function() {
             $('#image-preview').css({
-                'background-image': 'url("{{ asset('storage/' . $statistic->icon) }}")',
+                'background-image': 'url("")',
                 'background-size': 'cover',
                 'background-position': 'center center'
             });

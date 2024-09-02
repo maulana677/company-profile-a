@@ -40,7 +40,7 @@ class CompanyAboutController extends Controller
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail');
             $fileName = Str::random(40) . '.' . $file->getClientOriginalExtension();
-            $thumbnailPath = $file->storeAs('thumbnails', $fileName, 'public');
+            $thumbnailPath = $file->storeAs('abouts', $fileName, 'public'); // Menyimpan di folder 'abouts'
         }
 
         // Membuat instance baru dari model CompanyAbout
@@ -70,10 +70,12 @@ class CompanyAboutController extends Controller
      */
     public function edit(string $id)
     {
-        $about = CompanyAbout::findOrFail($id);
+        $companyAbout = CompanyAbout::findOrFail($id);
 
-        // Menampilkan view edit dengan data yang ditemukan
-        return view('admin.abouts.edit', compact('companyAbout'));
+        // Mengambil keypoints terkait jika ada
+        $keypoints = $companyAbout->keypoints->pluck('keypoint');
+
+        return view('admin.abouts.edit', compact('companyAbout', 'keypoints'));
     }
 
     /**
@@ -81,29 +83,34 @@ class CompanyAboutController extends Controller
      */
     public function update(UpdateAboutRequest $request, string $id)
     {
-        // Mencari data berdasarkan ID
+        // Mengambil data CompanyAbout berdasarkan ID
         $about = CompanyAbout::findOrFail($id);
 
-        // Menginisialisasi path thumbnail jika file baru diunggah
+        // Menginisialisasi path thumbnail
+        $thumbnailPath = $about->thumbnail;
+
         if ($request->hasFile('thumbnail')) {
-            // Menghapus file thumbnail lama jika ada
+            // Menghapus file lama jika ada
             if ($about->thumbnail && Storage::disk('public')->exists($about->thumbnail)) {
                 Storage::disk('public')->delete($about->thumbnail);
             }
 
-            // Upload file thumbnail baru dengan nama acak
+            // Menyimpan file thumbnail baru
             $file = $request->file('thumbnail');
             $fileName = Str::random(40) . '.' . $file->getClientOriginalExtension();
-            $thumbnailPath = $file->storeAs('thumbnails', $fileName, 'public');
-            $about->thumbnail = $thumbnailPath;
+            $thumbnailPath = $file->storeAs('abouts', $fileName, 'public');
         }
 
-        // Mengupdate field lain pada model
+        // Memperbarui data CompanyAbout
         $about->name = $request->name;
         $about->type = $request->type;
+        $about->thumbnail = $thumbnailPath;
         $about->save();
 
-        // Mengirimkan pesan sukses menggunakan Toastr
+        // Menghapus keypoints lama
+        $about->keypoints()->delete();
+
+        // Redirect ke halaman index dengan pesan sukses
         toastr()->success('Data Berhasil Diperbarui');
         return redirect()->route('admin.abouts.index');
     }

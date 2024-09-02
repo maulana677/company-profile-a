@@ -39,7 +39,7 @@
                     <div
                         class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                         <div class="login-brand">
-                            <img src="{{ asset('admin/assets/img/logo.svg') }}" alt="logo">
+                            <img src="{{ asset('admin/assets/img/logo b.png') }}" alt="logo">
                         </div>
 
                         <div class="card card-primary">
@@ -55,7 +55,7 @@
                                         <label for="email">Email</label>
                                         <input id="email" type="email" class="form-control" name="email"
                                             tabindex="1" required autofocus value="{{ old('email') }}"
-                                            placeholder="Masukkan email anda">
+                                            placeholder="Masukkkan email anda">
                                         <div class="invalid-feedback">
                                             Please fill in your email
                                         </div>
@@ -71,7 +71,7 @@
                                             </div>
                                         </div>
                                         <input id="password" type="password" class="form-control" name="password"
-                                            tabindex="2" placeholder="Masukkan password anda" required>
+                                            tabindex="2" placeholder="Masukkkan password anda" required>
                                         <div class="invalid-feedback">
                                             please fill in your password
                                         </div>

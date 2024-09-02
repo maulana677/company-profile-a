@@ -14,7 +14,7 @@
         <div class="section-body">
             <h2 class="section-title">Edit Principle</h2>
             <p class="section-lead">
-                On this page, you can edit the details of the principle and update the necessary fields.
+                On this page, you can edit the existing principle and update the required fields.
             </p>
 
             <div class="row">
@@ -32,7 +32,7 @@
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Name</label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text" name="name" class="form-control"
-                                            value="{{ old('name', $principle->name) }}" required>
+                                            value="{{ old('name', $principle->name) }}">
                                         @error('name')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
@@ -42,13 +42,11 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="image-preview" class="image-preview">
-                                            <label for="image-upload" id="image-label">Choose File</label>
-                                            <input type="file" name="thumbnail" id="image-upload" />
-                                            @if ($principle->thumbnail)
-                                                <img src="{{ asset('storage/' . $principle->thumbnail) }}" alt="Thumbnail"
-                                                    style="max-width: 100px; margin-top: 10px;">
-                                            @endif
+                                        <div id="image-preview-thumbnail" class="image-preview"
+                                            style="background-image: url('{{ asset('storage/' . $principle->thumbnail) }}'); background-size: cover; background-position: center center;">
+                                            <label for="image-upload-thumbnail" id="image-label-thumbnail">Choose
+                                                File</label>
+                                            <input type="file" name="thumbnail" id="image-upload-thumbnail" />
                                         </div>
                                         @error('thumbnail')
                                             <p class="text-danger">{{ $message }}</p>
@@ -59,13 +57,10 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="icon-preview" class="icon-preview">
-                                            <label for="icon-upload" id="icon-label">Choose File</label>
-                                            <input type="file" name="icon" id="icon-upload" />
-                                            @if ($principle->icon)
-                                                <img src="{{ asset('storage/' . $principle->icon) }}" alt="Icon"
-                                                    style="max-width: 100px; margin-top: 10px;">
-                                            @endif
+                                        <div id="image-preview-icon" class="image-preview"
+                                            style="background-image: url('{{ asset('storage/' . $principle->icon) }}'); background-size: cover; background-position: center center;">
+                                            <label for="image-upload-icon" id="image-label-icon">Choose File</label>
+                                            <input type="file" name="icon" id="image-upload-icon" />
                                         </div>
                                         @error('icon')
                                             <p class="text-danger">{{ $message }}</p>
@@ -76,7 +71,7 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Subtitle</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <textarea name="subtitle" class="form-control" rows="3" required>{{ old('subtitle', $principle->subtitle) }}</textarea>
+                                        <textarea name="subtitle" class="form-control" rows="3">{{ old('subtitle', $principle->subtitle) }}</textarea>
                                         @error('subtitle')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
@@ -101,14 +96,14 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#image-preview').css({
-                'background-image': 'url("")',
+            $('#image-preview-thumbnail').css({
+                'background-image': 'url("{{ asset('storage/' . $principle->thumbnail) }}")',
                 'background-size': 'cover',
                 'background-position': 'center center'
             });
 
-            $('#icon-preview').css({
-                'background-image': 'url("")',
+            $('#image-preview-icon').css({
+                'background-image': 'url("{{ asset('storage/' . $principle->icon) }}")',
                 'background-size': 'cover',
                 'background-position': 'center center'
             });

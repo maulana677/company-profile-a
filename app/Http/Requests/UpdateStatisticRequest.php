@@ -27,4 +27,20 @@ class UpdateStatisticRequest extends FormRequest
             'icon' => ['sometimes', 'image', 'mimes:png,jpg,jpeg'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Nama wajib diisi.',
+            'name.string' => 'Nama harus berupa teks.',
+            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+
+            'goal.required' => 'Goal wajib diisi.',
+            'goal.string' => 'Goal harus berupa teks.',
+            'goal.max' => 'Goal tidak boleh lebih dari 255 karakter.',
+
+            'icon.image' => 'Icon harus berupa gambar.',
+            'icon.mimes' => 'Icon harus memiliki format png, jpg, atau jpeg.',
+        ];
+    }
 }

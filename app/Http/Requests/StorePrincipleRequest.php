@@ -24,8 +24,8 @@ class StorePrincipleRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'subtitle' => ['required', 'string', 'max:255'],
-            'thumbnail' => ['required', 'image', 'mimes:png,jpg,jpeg'],
-            'icon' => ['required', 'image', 'mimes:png,jpg,jpeg'],
+            'thumbnail' => ['required', 'image', 'mimes:png,jpg,jpeg,svg'],
+            'icon' => ['required', 'image', 'mimes:png,jpg,jpeg,svg'],
         ];
     }
 
@@ -42,11 +42,11 @@ class StorePrincipleRequest extends FormRequest
 
             'thumbnail.required' => 'Thumbnail wajib diunggah.',
             'thumbnail.image'    => 'Thumbnail harus berupa gambar.',
-            'thumbnail.mimes'    => 'Thumbnail harus berformat png, jpg, atau jpeg.',
+            'thumbnail.mimes'    => 'Thumbnail harus berformat png, jpg, jpeg atau svg.',
 
             'icon.required' => 'Icon wajib diunggah.',
             'icon.image'    => 'Icon harus berupa gambar.',
-            'icon.mimes' => 'Icon harus berformat png, jpg, atau jpeg.',
+            'icon.mimes' => 'Icon harus berformat png, jpg, jpeg atau svg.',
         ];
     }
 }

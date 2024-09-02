@@ -33,11 +33,11 @@
                                     <thead>
                                         <tr>
                                             <th class="text-left">No</th>
-                                            <th>Achievement</th>
-                                            <th>Subheading</th>
                                             <th>Heading</th>
-                                            <th>Video</th>
                                             <th>Banner</th>
+                                            <th>Subheading</th>
+                                            <th>Achievement</th>
+                                            <th>Video</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

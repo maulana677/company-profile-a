@@ -9,7 +9,7 @@
             <div class="col-12 mb-4">
                 <div class="hero bg-primary text-white">
                     <div class="hero-inner">
-                        <h2>Selamat Datang, Ujang!</h2>
+                        <h2>Selamat Datang, {{ auth()->user()->name }}</h2>
                         <p class="lead">Anda hampir sampai, buat Product langsung disini</p>
                         <div class="mt-4">
                             <a href="{{ route('admin.products.create') }}"

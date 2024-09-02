@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTestimonialRequest;
+use App\Http\Requests\UpdateTestimonialRequest;
 use App\Models\ProjectClient;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -33,7 +35,7 @@ class TestimonialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTestimonialRequest $request)
     {
         // Inisialisasi thumbnailPath
         $thumbnailPath = null;
@@ -71,35 +73,43 @@ class TestimonialController extends Controller
     public function edit(string $id)
     {
         $testimonial = Testimonial::findOrFail($id);
-        return view('admin.testimonials.edit', compact('testimonial'));
+        $projectClients = ProjectClient::all();
+        return view('admin.testimonials.edit', compact('testimonial', 'projectClients'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateTestimonialRequest $request, string $id)
     {
-        // Ambil data testimonial berdasarkan ID
+        // Mencari data Testimonial berdasarkan ID
         $testimonial = Testimonial::findOrFail($id);
+
+        // Inisialisasi path thumbnail
+        $thumbnailPath = $testimonial->thumbnail;
 
         // Cek jika ada file thumbnail yang di-upload
         if ($request->hasFile('thumbnail')) {
-            // Hapus file thumbnail lama jika ada
+            // Menghapus file thumbnail lama jika ada
             if ($testimonial->thumbnail && Storage::disk('public')->exists($testimonial->thumbnail)) {
                 Storage::disk('public')->delete($testimonial->thumbnail);
             }
 
-            // Upload file thumbnail baru dengan nama acak
+            // Meng-upload file thumbnail baru dengan nama acak
             $thumbnailFile = $request->file('thumbnail');
             $thumbnailFileName = Str::random(40) . '.' . $thumbnailFile->getClientOriginalExtension();
             $thumbnailPath = $thumbnailFile->storeAs('testimonials', $thumbnailFileName, 'public');
         }
 
-        // Perbarui data lainnya
-        $testimonial->message = $request->message;
+        // Memperbarui data Testimonial
         $testimonial->project_client_id = $request->project_client_id;
+        $testimonial->message = $request->message;
         $testimonial->thumbnail = $thumbnailPath;
         $testimonial->save();
+
+        // Menampilkan pesan sukses
+        toastr()->success('Data Berhasil Diperbarui');
+        return redirect()->route('admin.testimonials.index');
     }
 
     /**

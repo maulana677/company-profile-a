@@ -28,4 +28,25 @@ class StoreTeamRequest extends FormRequest
             'avatar' => ['required', 'image', 'mimes:png,jpg,jpeg'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Nama wajib diisi.',
+            'name.string' => 'Nama harus berupa teks.',
+            'name.max' => 'Nama tidak boleh lebih dari 255 karakter.',
+
+            'occupation.required' => 'Pekerjaan wajib diisi.',
+            'occupation.string' => 'Pekerjaan harus berupa teks.',
+            'occupation.max' => 'Pekerjaan tidak boleh lebih dari 255 karakter.',
+
+            'location.required' => 'Lokasi wajib diisi.',
+            'location.string' => 'Lokasi harus berupa teks.',
+            'location.max' => 'Lokasi tidak boleh lebih dari 255 karakter.',
+
+            'avatar.required' => 'Avatar wajib diupload.',
+            'avatar.image' => 'Avatar harus berupa gambar.',
+            'avatar.mimes' => 'Avatar harus berupa file dengan format: png, jpg, atau jpeg.',
+        ];
+    }
 }
