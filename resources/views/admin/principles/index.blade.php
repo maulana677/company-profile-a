@@ -33,10 +33,10 @@
                                     <thead>
                                         <tr>
                                             <th class="text-left">No</th>
-                                            <th>Subtitle</th>
-                                            <th>Name</th>
-                                            <th>Thumbnail</th>
                                             <th>Icon</th>
+                                            <th>Name</th>
+                                            <th>Subtitle</th>
+                                            <th>Thumbnail</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -44,22 +44,22 @@
                                         @foreach ($principles as $principle)
                                             <tr>
                                                 <td class="text-left">{{ ++$loop->index }}</td>
-                                                <td>{{ $principle->subtitle }}</td>
-                                                <td>{{ $principle->name }}</td>
-                                                <td>
-                                                    @if ($principle->thumbnail)
-                                                        <img src="{{ asset('storage/' . $principle->thumbnail) }}"
-                                                            alt="Thumbnail" width="50">
-                                                    @else
-                                                        No Thumbnail
-                                                    @endif
-                                                </td>
                                                 <td>
                                                     @if ($principle->icon)
                                                         <img src="{{ asset('storage/' . $principle->icon) }}" alt="Icon"
                                                             width="50">
                                                     @else
                                                         No Icon
+                                                    @endif
+                                                </td>
+                                                <td>{{ $principle->name }}</td>
+                                                <td>{{ $principle->subtitle }}</td>
+                                                <td>
+                                                    @if ($principle->thumbnail)
+                                                        <img src="{{ asset('storage/' . $principle->thumbnail) }}"
+                                                            alt="Thumbnail" width="50">
+                                                    @else
+                                                        No Thumbnail
                                                     @endif
                                                 </td>
                                                 <td>

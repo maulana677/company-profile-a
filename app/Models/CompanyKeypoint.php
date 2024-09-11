@@ -10,8 +10,11 @@ class CompanyKeypoint extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'company_about_id',
-        'keypoint',
-    ];
+    protected $fillable = ['company_about_id', 'keypoint'];
+
+    // Relasi ke CompanyAbout
+    public function companyAbout()
+    {
+        return $this->belongsTo(CompanyAbout::class);
+    }
 }

@@ -52,15 +52,16 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="image-preview" class="image-preview">
-                                            <label for="image-upload" id="image-label">Choose File</label>
-                                            <input type="file" name="icon" id="image-upload" />
+                                        <div id="icon-preview" class="image-preview">
+                                            <label for="icon-upload" id="image-label">Choose File</label>
+                                            <input type="file" name="icon" id="icon-upload" />
                                         </div>
                                         @error('icon')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
+
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Subtitle</label>
                                     <div class="col-sm-12 col-md-7">
@@ -93,11 +94,33 @@
                 'background-size': 'cover',
                 'background-position': 'center center'
             });
+        });
 
-            $('#image-preview').css({
-                'background-image': 'url("")',
-                'background-size': 'cover',
-                'background-position': 'center center'
+        $(document).ready(function() {
+            $('#icon-upload').on('change', function() {
+                const file = this.files[0];
+                const previewElement = $('#icon-preview');
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        previewElement.css({
+                            'background-image': 'url(' + e.target.result + ')',
+                            'background-size': 'cover',
+                            'background-position': 'center center',
+                            'background-repeat': 'no-repeat',
+                            'height': '100px', // Sesuaikan dengan kebutuhan Anda
+                            'width': '100px' // Sesuaikan dengan kebutuhan Anda
+                        });
+                    }
+
+                    reader.readAsDataURL(file);
+                } else {
+                    previewElement.css({
+                        'background-image': 'none'
+                    });
+                }
             });
         });
     </script>

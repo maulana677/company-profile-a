@@ -129,7 +129,7 @@ class OurTeamController extends Controller
             $team->delete();
 
             // Mengembalikan respon sukses
-            return response(['status' => 'success', 'message' => 'Team berhasil dihapus!']);
+            return response(['status' => 'success', 'message' => 'Data berhasil dihapus!']);
         } catch (\Throwable $th) {
             // Menangani kesalahan dan mengembalikan respon error
             return response(['status' => 'error', 'message' => 'Terjadi kesalahan saat menghapus team!']);

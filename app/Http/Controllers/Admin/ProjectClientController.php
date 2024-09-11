@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClientRequest;
+use App\Http\Requests\UpdateClientRequest;
 use App\Models\ProjectClient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -85,7 +86,7 @@ class ProjectClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateClientRequest $request, string $id)
     {
         // Mengambil data client berdasarkan ID
         $client = ProjectClient::findOrFail($id);
@@ -123,9 +124,8 @@ class ProjectClientController extends Controller
         $client->occupation = $request->occupation;
         $client->save();
 
-        // Mengirimkan pesan sukses menggunakan Toastr
         toastr()->success('Data Berhasil Diperbarui');
-        return redirect()->route('admin.abouts.index');
+        return redirect()->route('admin.clients.index');
     }
 
     /**
@@ -133,6 +133,28 @@ class ProjectClientController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            // Mencari data ProjectClient berdasarkan ID
+            $client = ProjectClient::findOrFail($id);
+
+            // Menghapus file avatar jika ada
+            if ($client->avatar && Storage::disk('public')->exists($client->avatar)) {
+                Storage::disk('public')->delete($client->avatar);
+            }
+
+            // Menghapus file logo jika ada
+            if ($client->logo && Storage::disk('public')->exists($client->logo)) {
+                Storage::disk('public')->delete($client->logo);
+            }
+
+            // Menghapus data ProjectClient dari database
+            $client->delete();
+
+            // Mengembalikan respon sukses
+            return response(['status' => 'success', 'message' => 'Project Client berhasil dihapus!']);
+        } catch (\Throwable $th) {
+            // Menangani kesalahan dan mengembalikan respon error
+            return response(['status' => 'error', 'message' => 'Terjadi kesalahan saat menghapus Project Client!']);
+        }
     }
 }

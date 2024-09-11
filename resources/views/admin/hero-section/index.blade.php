@@ -6,13 +6,13 @@
             <h1>Hero Sections</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="#">Hero</a></div>
-                <div class="breadcrumb-item">Hero Sections</div>
+                <div class="breadcrumb-item"><a href="#">Hero Sections</a></div>
+                <div class="breadcrumb-item">All Hero Sections</div>
             </div>
         </div>
 
         <div class="section-body">
-            <h2 class="section-title">Hero Sections</h2>
+            <h2 class="section-title">All Hero Sections</h2>
             <p class="section-lead">
                 On this page, you can see all the hero section data.
             </p>
@@ -33,42 +33,34 @@
                                     <thead>
                                         <tr>
                                             <th class="text-left">No</th>
-                                            <th>Heading</th>
                                             <th>Banner</th>
+                                            <th>Heading</th>
                                             <th>Subheading</th>
                                             <th>Achievement</th>
-                                            <th>Video</th>
+                                            <th>Path Video</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($heroSection as $heroSections)
+                                        @foreach ($heroSections as $heroSection)
                                             <tr>
                                                 <td class="text-left">{{ ++$loop->index }}</td>
-                                                <td>{{ $heroSections->achievement }}</td>
-                                                <td>{{ $heroSections->subheading }}</td>
-                                                <td>{{ $heroSections->heading }}</td>
                                                 <td>
-                                                    @if ($heroSections->path_video)
-                                                        <a href="{{ asset('storage/' . $heroSections->path_video) }}"
-                                                            target="_blank">View Video</a>
-                                                    @else
-                                                        No Video
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($heroSections->banner)
-                                                        <img src="{{ asset('storage/' . $heroSections->banner) }}"
+                                                    @if ($heroSection->banner)
+                                                        <img src="{{ asset('storage/' . $heroSection->banner) }}"
                                                             alt="Banner" width="50">
                                                     @else
                                                         No Banner
                                                     @endif
                                                 </td>
+                                                <td>{{ $heroSection->heading }}</td>
+                                                <td>{{ $heroSection->subheading }}</td>
+                                                <td>{{ $heroSection->achievement }}</td>
+                                                <td>{{ $heroSection->path_video }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.hero-sections.edit', $heroSections->id) }}"
-                                                        class="btn btn-primary"><i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a href="{{ route('admin.hero-sections.destroy', $heroSections->id) }}"
+                                                    <a href="{{ route('admin.hero-sections.edit', $heroSection->id) }}"
+                                                        class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('admin.hero-sections.destroy', $heroSection->id) }}"
                                                         class="btn btn-danger delete-item"><i
                                                             class="fas fa-trash-alt"></i></a>
                                                 </td>
@@ -88,16 +80,15 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            // Inisialisasi DataTables
             $('#table').DataTable({
-                "pageLength": 5, // Jumlah baris per halaman
-                "lengthMenu": [5, 10, 25, 50], // Opsi jumlah baris per halaman
-                "searching": true, // Aktifkan pencarian
-                "paging": true, // Aktifkan pagination
-                "ordering": true, // Aktifkan pengurutan kolom
-                "info": true, // Tampilkan informasi tentang tabel
+                "pageLength": 5,
+                "lengthMenu": [5, 10, 25, 50],
+                "searching": true,
+                "paging": true,
+                "ordering": true,
+                "info": true,
                 "language": {
-                    "emptyTable": "Tidak ada data yang tersedia" // Ubah pesan ketika tabel kosong
+                    "emptyTable": "Tidak ada data yang tersedia"
                 },
                 "destroy": true,
             });

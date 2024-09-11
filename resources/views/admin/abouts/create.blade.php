@@ -73,8 +73,9 @@
                                         Keypoints</h2>
                                     <div class="col-sm-12 col-md-7">
                                         @for ($i = 0; $i < 3; $i++)
-                                            <input type="text" class="py-3 rounded-lg border-slate-300 border"
-                                                placeholder="Write your keypoint" name="keypoints[]">
+                                            <input name="keypoints[]" type="text"
+                                                class="py-3 rounded-lg border-slate-300 border"
+                                                placeholder="Write your keypoint">
                                         @endfor
                                     </div>
                                 </div>

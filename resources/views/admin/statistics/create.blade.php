@@ -37,15 +37,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Goal</label>
-                                    <div class="col-sm-12 col-md-7">
-                                        <input type="text" name="goal" class="form-control" value="">
-                                        @error('goal')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Icon</label>
                                     <div class="col-sm-12 col-md-7">
                                         <div id="image-preview" class="image-preview">
@@ -53,6 +44,15 @@
                                             <input type="file" name="icon" id="image-upload" />
                                         </div>
                                         @error('icon')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Goal</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input type="text" name="goal" class="form-control" value="">
+                                        @error('goal')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreAboutRequest;
 use App\Http\Requests\UpdateAboutRequest;
 use App\Models\CompanyAbout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -34,23 +35,28 @@ class CompanyAboutController extends Controller
      */
     public function store(StoreAboutRequest $request)
     {
-        // Menginisialisasi path thumbnail
-        $thumbnailPath = null;
 
-        if ($request->hasFile('thumbnail')) {
-            $file = $request->file('thumbnail');
-            $fileName = Str::random(40) . '.' . $file->getClientOriginalExtension();
-            $thumbnailPath = $file->storeAs('abouts', $fileName, 'public'); // Menyimpan di folder 'abouts'
-        }
+        DB::transaction(function () use ($request) {
+            $validated = $request->validated();
 
-        // Membuat instance baru dari model CompanyAbout
-        $about = new CompanyAbout();
-        $about->name = $request->name;
-        $about->type = $request->type;
-        $about->thumbnail = $thumbnailPath;
+            // Memeriksa apakah file 'thumbnail' diunggah
+            if ($request->hasFile('thumbnail')) {
+                $thumbnailPath = $request->file('thumbnail')->store('abouts', 'public');
+                $validated['thumbnail'] = $thumbnailPath;
+            }
 
-        // Menyimpan data ke database
-        $about->save();
+            // Menyimpan data 'about' dengan thumbnail
+            $about = CompanyAbout::create($validated);
+
+            // Menyimpan keypoints jika ada
+            if (!empty($validated['keypoints'])) {
+                foreach ($validated['keypoints'] as $keypoint) {
+                    $about->keypoints()->create([
+                        'keypoint' => $keypoint
+                    ]);
+                }
+            }
+        });
 
         // Redirect ke halaman index dengan pesan sukses
         toastr()->success('Data Berhasil Dibuat');

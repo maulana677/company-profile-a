@@ -40,11 +40,11 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Banner</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="banner-preview" class="image-preview">
-                                            <label for="banner-upload" id="banner-label">Choose File</label>
-                                            <input type="file" name="banner" id="banner-upload" />
+                                        <div id="image-preview" class="image-preview">
+                                            <label for="image-upload" id="image-label">Choose File</label>
+                                            <input type="file" name="banner" id="image-upload" />
                                         </div>
-                                        @error('banner')
+                                        @error('avatar')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
@@ -72,10 +72,8 @@
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Path Video</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <div id="video-preview" class="image-preview">
-                                            <label for="video-upload" id="video-label">Choose File</label>
-                                            <input type="file" name="path_video" id="video-upload" />
-                                        </div>
+                                        <input type="text" name="path_video" class="form-control"
+                                            value="{{ old('path_video') }}">
                                         @error('path_video')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
@@ -99,13 +97,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#video-preview').css({
-                'background-image': 'url("")',
-                'background-size': 'cover',
-                'background-position': 'center center'
-            });
-
-            $('#banner-preview').css({
+            $('#image-preview').css({
                 'background-image': 'url("")',
                 'background-size': 'cover',
                 'background-position': 'center center'
