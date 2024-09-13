@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\ArtikelController;
 use App\Http\Controllers\Admin\CompanyAboutController;
 use App\Http\Controllers\Admin\CompanyStatisticController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FaqQuestionController;
+use App\Http\Controllers\Admin\FaqSectionSettingController;
 use App\Http\Controllers\Admin\FooterInfoController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\OurPrincipleController;
@@ -69,5 +71,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::middleware('can:manage footer sections')->group(function () {
         // route Footer Info
         Route::resource('footer-info', FooterInfoController::class);
+    });
+
+    Route::middleware('can:manage faq sections')->group(function () {
+        Route::resource('faq-section-setting', FaqSectionSettingController::class);
+        Route::resource('faq-question', FaqQuestionController::class);
     });
 });

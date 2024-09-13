@@ -26,6 +26,7 @@ class RolePermissionSeeder extends Seeder
             'manage appointments',
             'manage hero sections',
             'manage footer sections',
+            'manage faq sections',
         ];
 
         foreach ($permission as $permission) {
